@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": false
+    },
+    "street_address": {
+      "type": "string",
+      "required": true
+    },
+    "apartment_no": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "province": {
+      "type": "string",
+      "required": true
+    },
+    "zip": {
+      "type": "integer",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone_no": {
+      "required": true,
+      "type": "integer"
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "COD",
+        "Stripe",
+        "Authorize.net"
+      ],
+      "required": true
+    },
+    "transaction_info": {
+      "type": "json"
+    },
+    "order_items": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
