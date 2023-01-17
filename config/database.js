@@ -1,11 +1,16 @@
-const path = require('path');
-
+// strapi-api/config/database.js
 module.exports = ({ env }) => ({
+  defaultConnection: "default",
   connection: {
-    client: 'sqlite',
+    client: "postgres",
     connection: {
-      filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+      host: env("DATABASE_HOST", "localhost"),
+      port: env.int("DATABASE_PORT", 5432),
+      database: env("DATABASE_NAME", "collax-ecommerce"),
+      user: env("DATABASE_USERNAME", "postgres"),
+      password: env("DATABASE_PASSWORD", "root"),
+      schema: env("DATABASE_SCHEMA", "public"), // Not required
     },
-    useNullAsDefault: true,
+    debug: false,
   },
 });
