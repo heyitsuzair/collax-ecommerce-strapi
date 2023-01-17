@@ -43,17 +43,9 @@
       "type": "string",
       "required": true
     },
-    "zip": {
-      "type": "integer",
-      "required": true
-    },
     "email": {
       "type": "email",
       "required": true
-    },
-    "phone_no": {
-      "required": true,
-      "type": "integer"
     },
     "method": {
       "type": "enumeration",
@@ -69,6 +61,14 @@
     },
     "order_items": {
       "type": "json",
+      "required": true
+    },
+    "phone_no": {
+      "type": "string",
+      "required": true
+    },
+    "zip": {
+      "type": "string",
       "required": true
     }
   }
