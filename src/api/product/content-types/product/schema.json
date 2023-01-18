@@ -37,7 +37,16 @@
       "targetField": "product_title",
       "required": true
     },
-    "attributes": {
+    "available_qty": {
+      "required": true,
+      "default": 10,
+      "type": "integer"
+    },
+    "colors": {
+      "type": "json",
+      "required": true
+    },
+    "sizes": {
       "type": "json",
       "required": true
     }
