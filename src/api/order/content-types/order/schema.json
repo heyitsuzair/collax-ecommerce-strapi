@@ -70,6 +70,10 @@
     "zip": {
       "type": "string",
       "required": true
+    },
+    "total": {
+      "type": "integer",
+      "required": true
     }
   }
 }
