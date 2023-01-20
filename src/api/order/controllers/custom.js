@@ -55,7 +55,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         );
         ctx.body = {
           error: false,
-          msg: "Order Added!",
+          msg: "Order Placed!",
         };
       } else if (method === "Stripe") {
         /**
@@ -116,7 +116,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         );
         ctx.body = {
           error: false,
-          msg: "Order Added!",
+          msg: "Order Placed!",
         };
       } else {
         /**
@@ -131,9 +131,11 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
          * @var creditCard Card Information
          */
         var creditCard = new ApiContracts.CreditCardType();
-        creditCard.setCardNumber(card_no);
-        creditCard.setExpirationDate(expiry_month + expiry_year);
-        creditCard.setCardCode(card_cvc);
+        creditCard.setCardNumber(card_no.toString());
+        creditCard.setExpirationDate(
+          expiry_month.toString() + expiry_year.toString()
+        );
+        creditCard.setCardCode(card_cvc.toString());
 
         var paymentType = new ApiContracts.PaymentType();
         paymentType.setCreditCard(creditCard);
@@ -274,7 +276,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             );
             ctx.body = {
               error: false,
-              msg: "Order Added!",
+              msg: "Order Placed!",
             };
           })
           .catch((err) => (ctx.body = { error: true, msg: err.msg }));
