@@ -53,6 +53,22 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             },
           }
         );
+        /**
+         * Update Product Quantity
+         */
+        order_items.forEach(async (item) => {
+          const query = {
+            where: {
+              id: item.product_id,
+            },
+            data: {
+              available_qty: item.product_info.available_qty - item.req_qty,
+            },
+          };
+
+          await strapi.db.query("api::product.product").update(query);
+        });
+
         ctx.body = {
           error: false,
           msg: "Order Placed!",
@@ -114,6 +130,21 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             },
           }
         );
+        /**
+         * Update Product Quantity
+         */
+        order_items.forEach(async (item) => {
+          const query = {
+            where: {
+              id: item.product_id,
+            },
+            data: {
+              available_qty: item.product_info.available_qty - item.req_qty,
+            },
+          };
+
+          await strapi.db.query("api::product.product").update(query);
+        });
         ctx.body = {
           error: false,
           msg: "Order Placed!",
@@ -274,6 +305,21 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
                 },
               }
             );
+            /**
+             * Update Product Quantity
+             */
+            order_items.forEach(async (item) => {
+              const query = {
+                where: {
+                  id: item.product_id,
+                },
+                data: {
+                  available_qty: item.product_info.available_qty - item.req_qty,
+                },
+              };
+
+              await strapi.db.query("api::product.product").update(query);
+            });
             ctx.body = {
               error: false,
               msg: "Order Placed!",
